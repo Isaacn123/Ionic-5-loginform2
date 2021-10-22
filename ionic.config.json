@@ -1,0 +1,7 @@
+{
+  "name": "loginform2",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

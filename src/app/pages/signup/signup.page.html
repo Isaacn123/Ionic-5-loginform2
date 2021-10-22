@@ -1,0 +1,107 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <ion-title>signup</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaulthref="login" text="">
+      </ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="bg-color">
+
+    <ion-card class="ion-no-margin">
+
+        <ion-card-header>
+            <ion-card-title>
+              Sign Up
+            </ion-card-title>
+            <ion-card-subtitle>
+              Create Your account by filling
+up the form
+              </ion-card-subtitle>
+        </ion-card-header>
+             <form [formGroup]="ValidationFormUSer" (ngSubmit)="registerUser(ValidationFormUSer.value)">
+       <ion-card-content>
+           <ion-item>
+               <ion-input name="names" type="text" placeholder="FullName" formControlName="names">
+                 <ion-icon name="person-outline"  ></ion-icon>
+               </ion-input>
+           </ion-item>
+              <div>
+                <ng-container *ngFor="let validation of validationMessages.names">
+
+                  <div class="error_message" *ngIf="ValidationFormUSer.get('names').hasError(validation.type) && (ValidationFormUSer.get('names').dirty || ValidationFormUSer.get('names').touched)">
+                      {{validation.message}}
+                  </div>
+
+                 </ng-container>
+
+              </div>
+           <ion-item>
+               <ion-input name="phone" type="text" placeholder="Phone No." formControlName="phone">
+                 <ion-icon name="call-outline" ></ion-icon>
+               </ion-input>
+           </ion-item>
+           <div>
+             <ng-container *ngFor="let validation of validationMessages.phone">
+
+               <div class="error_message" *ngIf="ValidationFormUSer.get('phone').hasError(validation.type) && (ValidationFormUSer.get('phone').dirty || ValidationFormUSer.get('phone').touched)">
+                   {{validation.message}}
+               </div>
+
+              </ng-container>
+
+           </div>
+           <ion-item>
+               <ion-input name="email" type="text" placeholder="Email" formControlName="email">
+                 <ion-icon name="mail-outline" ></ion-icon>
+               </ion-input>
+           </ion-item>
+           <ng-container *ngFor="let validation of validationMessages.email">
+
+             <div class="error_message" *ngIf="ValidationFormUSer.get('email').hasError(validation.type) && (ValidationFormUSer.get('email').dirty || ValidationFormUSer.get('email').touched)">
+                 {{validation.message}}
+             </div>
+
+            </ng-container>
+           <ion-item>
+               <ion-input name="password" type="password" placeholder="************" formControlName="password">
+                 <ion-icon name="lock-closed" ></ion-icon>
+               </ion-input>
+           </ion-item>
+           <ng-container *ngFor="let validation of validationMessages.password">
+
+             <div class="error_message" *ngIf="ValidationFormUSer.get('password').hasError(validation.type) && (ValidationFormUSer.get('password').dirty || ValidationFormUSer.get('password').touched)">
+                 {{validation.message}}
+             </div>
+
+            </ng-container>
+
+           <div class="sign-btn-wrap">
+              <ion-button  shape="round" type="submit"  fill="solid" class="sign-btn" [disabled]="!ValidationFormUSer.valid">Sign Up</ion-button>
+             </div>
+
+             <div class="text-tag">
+             <span>Sign Up with</span>
+             </div>
+
+             <div class="social-btns">
+                 <ion-button fill="clear"  class="facebookbtn ion-no-padding">
+               <ion-img src="assets/images/facebook.png"></ion-img>
+                 </ion-button>
+                 <ion-button fill="clear"  class="googlebtn ion-no-padding">
+               <ion-img src="assets/images/google.png"></ion-img>
+                 </ion-button>
+                 <ion-button fill="clear"  class="applebtn ion-no-padding">
+               <ion-img src="assets/images/apple.png"></ion-img>
+                 </ion-button>
+
+               </div>
+
+       </ion-card-content>
+        </form>
+    </ion-card>
+
+</ion-content>
